@@ -342,29 +342,19 @@ extension InvociesDetailVC {
     }
     
     @objc func clickBtnTapped(sender: UITapGestureRecognizer) {
-        guard let invoicesListData = viewModel?.getInvoices() else { return }
-        
-        
         guard let selectedLabel = sender.view as? UILabel else {
-               return
+            return
         }
 
         let selectedIndex = selectedLabel.tag
-        guard selectedIndex < arrData.count else { return }
+        guard selectedIndex < arrData.count else {
+            return
+        }
+
         let selectedInvoice = arrData[selectedIndex]
         let selectedDueDate = selectedInvoice.dueDate ?? ""
-        if selectedLabel.tag == 0 {
-            popupView.createPopup(dueDate:selectedDueDate)
-        }else if selectedLabel.tag == 1 {
-            popupView.createPopup(dueDate:selectedDueDate )
-        }else if selectedLabel.tag == 2 {
-            popupView.createPopup(dueDate:selectedDueDate)
-        }else if selectedLabel.tag == 3 {
-            popupView.createPopup(dueDate:selectedDueDate)
-        }
-        popupView.createPopup(dueDate: invoicesListData.dueDate ?? "")
-        guard let invoicesListData = viewModel?.getInvoices() else { return }
-        popupView.createPopup(dueDate: invoicesListData.dueDate ?? "")
+        popupView.createPopup(dueDate: selectedDueDate)
+
         createPopup()
         hiddenPopup()
         
