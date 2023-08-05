@@ -167,10 +167,9 @@ class InvociesDetailVC: UIViewController {
     private var backgroundControl: UIControl = {
         let control = UIControl()
         control.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.5)
-        control.isUserInteractionEnabled = false // Popup'ın altındaki bileşenlerle etkileşimi engellemek
+        control.isUserInteractionEnabled = false
         return control
     }()
-    
     
     //MARK: Properties
     
@@ -216,10 +215,6 @@ class InvociesDetailVC: UIViewController {
         scrollView.addSubview(dueDateLabel)
         scrollView.addSubview(amountLabel)
         scrollView.addSubview(rightLineView)
-        //       view.addSubview(popupView)
-        //       popupView.backgroundColor = .white
-        
-        
         
         nameTextfield.delegate = self
         identifyTextfield.delegate = self
@@ -230,7 +225,7 @@ class InvociesDetailVC: UIViewController {
         showInvoicesDetail()
         
     }
-   
+    
     
     
     private func showInvoicesDetail() {
@@ -249,21 +244,25 @@ class InvociesDetailVC: UIViewController {
         }
         
         for (index, invoice) in arrData.enumerated() {
-                guard let invoiceType = determineInvoiceType(for: invoice) else { continue }
-                guard (invoiceType == "Ev" && fromHome) || (invoiceType == "İş Yeri" && !fromHome) else { continue }
-                
-                let excelStackView = ExcelStackView()
-                let gesture = UITapGestureRecognizer(target: self, action:#selector(clickBtnTapped))
-                excelStackView.paymentLabel.tag = index
-                excelStackView.paymentLabel.isUserInteractionEnabled = true
-                excelStackView.paymentLabel.addGestureRecognizer(gesture)
-                excelStackView.handleData(dueDate: invoice.dueDate ?? "", price: invoice.amount ?? "")
-                stackView.addArrangedSubview(excelStackView)
-                
-                excelStackView.snp.makeConstraints { make in
-                    make.height.equalTo(50)
-                }
+            guard let invoiceType = determineInvoiceType(for: invoice) else { continue }
+            guard (invoiceType == "Ev" && fromHome) || (invoiceType == "İş Yeri" && !fromHome) else { continue }
+            
+            let excelStackView = ExcelStackView()
+            let gesture = UITapGestureRecognizer(target: self, action:#selector(paymentClicked))
+            let gestureInvoices = UITapGestureRecognizer(target: self, action: #selector(invoicesClicked))
+            excelStackView.excelImage.addGestureRecognizer(gestureInvoices)
+            excelStackView.excelImage.isUserInteractionEnabled = true
+            excelStackView.excelImage.tag = index
+            excelStackView.paymentLabel.tag = index
+            excelStackView.paymentLabel.isUserInteractionEnabled = true
+            excelStackView.paymentLabel.addGestureRecognizer(gesture)
+            excelStackView.handleData(dueDate: invoice.dueDate ?? "", price: invoice.amount ?? "")
+            stackView.addArrangedSubview(excelStackView)
+            
+            excelStackView.snp.makeConstraints { make in
+                make.height.equalTo(50)
             }
+        }
         
     }
     
@@ -327,7 +326,7 @@ extension InvociesDetailVC {
         popupView.layer.cornerRadius = 20
         self.popupView.backgroundColor = UIColor("#FFFFFF")
         view.addSubview(popupView)
-       
+        
         
         popupView.snp.makeConstraints { make in
             make.center.equalToSuperview()
@@ -341,24 +340,39 @@ extension InvociesDetailVC {
         backgroundControl.isHidden = false
     }
     
-    @objc func clickBtnTapped(sender: UITapGestureRecognizer) {
+    @objc func paymentClicked(sender: UITapGestureRecognizer) {
         guard let selectedLabel = sender.view as? UILabel else {
             return
         }
-
+        
         let selectedIndex = selectedLabel.tag
         guard selectedIndex < arrData.count else {
             return
         }
-
+        
         let selectedInvoice = arrData[selectedIndex]
         let selectedDueDate = selectedInvoice.dueDate ?? ""
         popupView.createPopup(dueDate: selectedDueDate)
-
         createPopup()
         hiddenPopup()
         
+    }
+    @objc func invoicesClicked(sender: UITapGestureRecognizer) {
+        guard let selectedLabel = sender.view as? UIImageView else {
+            return
+        }
         
+        let selectedIndex = selectedLabel.tag
+        guard selectedIndex < arrData.count else {
+            return
+        }
+        
+        let selectedInvoice = arrData[selectedIndex]
+        let selectedDueDate = selectedInvoice.documentNumber ?? ""
+        popupView.createDocumentPopup(documentNo: selectedDueDate)
+        createPopup()
+        hiddenPopup()
+
     }
     
     func hiddenPopup() {
@@ -366,7 +380,7 @@ extension InvociesDetailVC {
             self.removeBlur()
         }
     }
-
+    
     private func removeBlur() {
         for subview in view.subviews {
             if let blurEffectView = subview as? UIVisualEffectView {
@@ -376,7 +390,7 @@ extension InvociesDetailVC {
             }
         }
     }
-
+    
     
 }
 

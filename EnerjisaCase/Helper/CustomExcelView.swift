@@ -45,7 +45,7 @@ class ExcelStackView: UIView {
         return label
     }()
     
-    private var excelImage: UIImageView = {
+    var excelImage: UIImageView = {
         let image = UIImageView()
         image.image = UIImage(named: "invoice")
         return image

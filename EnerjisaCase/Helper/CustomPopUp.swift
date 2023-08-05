@@ -25,7 +25,7 @@ class CustomPopup: UIView {
     private var descriptionLabel: UILabel = {
         let label = UILabel()
         label.textAlignment = .left
-        label.numberOfLines = 0
+        label.numberOfLines = 3
         label.textAlignment = .center
         label.textColor = UIColor("#444444")
         label.font = Font.custom(size: 15,fontWeight: .Medium)
@@ -62,13 +62,19 @@ class CustomPopup: UIView {
         descriptionLabel.text = "Bu fatura \(dueDate) tarihine kadar\nödenmesi gerekmektedir."
         
     }
+    func createDocumentPopup(documentNo:String) {
+        titleLabel.text = "Döküman Numarası"
+        descriptionLabel.text = "Bu faturaya ait döküman numarası\n\(documentNo)’dir. Bu numaraya istinaden\nişlemlerinizi gerçekleştirebilirsiniz."
+    }
     
     func configure() {
         addSubview(vectorImage)
         addSubview(titleLabel)
         addSubview(descriptionLabel)
         addSubview(clickButton)
-        
+        let gesture = UITapGestureRecognizer(target: self, action: #selector(ImageClicked))
+        vectorImage.addGestureRecognizer(gesture)
+        vectorImage.isUserInteractionEnabled = true
         vectorImage.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(25)
             make.centerX.equalToSuperview()
@@ -76,15 +82,16 @@ class CustomPopup: UIView {
         }
         
         titleLabel.snp.makeConstraints { make in
-            make.top.equalTo(vectorImage.snp.bottom).offset(20)
+            make.top.equalTo(vectorImage.snp.bottom).offset(16)
             make.centerX.equalToSuperview()
         }
         
         descriptionLabel.snp.makeConstraints { make in
-            make.top.equalTo(titleLabel.snp.bottom).offset(20)
+            make.top.equalTo(titleLabel.snp.bottom).offset(8)
             make.centerX.equalToSuperview()
             make.left.equalToSuperview().offset(30)
             make.right.equalToSuperview().offset(-30)
+            make.height.equalTo(80)
         }
         
         let startColor = UIColor("#FCEE50")
@@ -100,11 +107,16 @@ class CustomPopup: UIView {
             make.top.equalTo(descriptionLabel.snp.bottom).offset(20)
             make.left.equalToSuperview().offset(20)
             make.right.equalToSuperview().offset(-20)
+            make.bottom.equalToSuperview().offset(-20)
             make.height.equalTo(50)
         }
         
     }
     @objc func clickButtonTapped() {
+        nexPage?()
+    }
+    
+    @objc func ImageClicked() {
         nexPage?()
     }
 }
