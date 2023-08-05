@@ -65,7 +65,7 @@ class ExcelStackView: UIView {
         return label
     }()
     
-
+    var dueDate: String?
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -135,6 +135,7 @@ class ExcelStackView: UIView {
         }
 
     }
+
     
     
     

@@ -248,22 +248,23 @@ class InvociesDetailVC: UIViewController {
             make.bottom.equalTo(scrollView).offset(-20)
         }
         
-        for invoice in arrData {
-            guard let invoiceType = determineInvoiceType(for: invoice) else { continue }
-            guard (invoiceType == "Ev" && fromHome) || (invoiceType == "İş Yeri" && !fromHome) else { continue }
-            
-            let excelStackView = ExcelStackView()
-            let gesture = UITapGestureRecognizer(target: self, action: #selector(clickBtnTapped))
-            excelStackView.paymentLabel.isUserInteractionEnabled = true
-            excelStackView.paymentLabel.addGestureRecognizer(gesture)
-            excelStackView.handleData(dueDate: invoice.dueDate ?? "", price: invoice.amount ?? "")
-            stackView.addArrangedSubview(excelStackView)
-            
-            excelStackView.snp.makeConstraints { make in
-                make.height.equalTo(50)
+        for (index, invoice) in arrData.enumerated() {
+                guard let invoiceType = determineInvoiceType(for: invoice) else { continue }
+                guard (invoiceType == "Ev" && fromHome) || (invoiceType == "İş Yeri" && !fromHome) else { continue }
                 
+                let excelStackView = ExcelStackView()
+                let gesture = UITapGestureRecognizer(target: self, action:#selector(clickBtnTapped))
+                excelStackView.paymentLabel.tag = index
+                excelStackView.paymentLabel.isUserInteractionEnabled = true
+                excelStackView.paymentLabel.addGestureRecognizer(gesture)
+                excelStackView.handleData(dueDate: invoice.dueDate ?? "", price: invoice.amount ?? "")
+                stackView.addArrangedSubview(excelStackView)
+                
+                excelStackView.snp.makeConstraints { make in
+                    make.height.equalTo(50)
+                }
             }
-        }
+        
     }
     
     
@@ -326,8 +327,8 @@ extension InvociesDetailVC {
         popupView.layer.cornerRadius = 20
         self.popupView.backgroundColor = UIColor("#FFFFFF")
         view.addSubview(popupView)
-        guard let invoicesListData = viewModel?.getInvoices() else { return }
-        popupView.createPopup(dueDate:invoicesListData.dueDate! )
+       
+        
         popupView.snp.makeConstraints { make in
             make.center.equalToSuperview()
             make.width.equalTo(335)
@@ -341,9 +342,32 @@ extension InvociesDetailVC {
     }
     
     @objc func clickBtnTapped(sender: UITapGestureRecognizer) {
+        guard let invoicesListData = viewModel?.getInvoices() else { return }
         
+        
+        guard let selectedLabel = sender.view as? UILabel else {
+               return
+        }
+
+        let selectedIndex = selectedLabel.tag
+        guard selectedIndex < arrData.count else { return }
+        let selectedInvoice = arrData[selectedIndex]
+        let selectedDueDate = selectedInvoice.dueDate ?? ""
+        if selectedLabel.tag == 0 {
+            popupView.createPopup(dueDate:selectedDueDate)
+        }else if selectedLabel.tag == 1 {
+            popupView.createPopup(dueDate:selectedDueDate )
+        }else if selectedLabel.tag == 2 {
+            popupView.createPopup(dueDate:selectedDueDate)
+        }else if selectedLabel.tag == 3 {
+            popupView.createPopup(dueDate:selectedDueDate)
+        }
+        popupView.createPopup(dueDate: invoicesListData.dueDate ?? "")
+        guard let invoicesListData = viewModel?.getInvoices() else { return }
+        popupView.createPopup(dueDate: invoicesListData.dueDate ?? "")
         createPopup()
         hiddenPopup()
+        
         
     }
     
