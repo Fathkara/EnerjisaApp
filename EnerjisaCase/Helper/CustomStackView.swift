@@ -134,7 +134,6 @@ class CustomStackView: UIView {
         let stackView = UIStackView()
         stackView.axis = .horizontal
         stackView.spacing = 8
-//        stackView.distribution = .fillProportionally
         stackView.alignment = .center
         return stackView
     }()
@@ -174,10 +173,9 @@ class CustomStackView: UIView {
         return button
     }()
     
-    private var customInfoView = CustomInfoView()
-    
     //MARK: - Properties
     
+    private var customInfoView = CustomInfoView()
     var nexPage: (() -> Void)?
     
     //MARK: - Init
@@ -249,10 +247,7 @@ class CustomStackView: UIView {
       
     }
      
-    @objc func clickButtonTapped() {
-        nexPage?()
-    }
-    
+        
     func setupCosntraints(title: String, state: String, instNo: String, contNo: String, price: String, isList: Bool = true) {
         titleLabel.text = title
         descriptionLabel.text = "Adress:"
@@ -311,7 +306,11 @@ class CustomStackView: UIView {
             make.centerY.equalToSuperview()
 
         }
-        
-        
     }
+    
+    //MARK: - Target Function
+    @objc func clickButtonTapped() {
+        nexPage?()
+    }
+
 }

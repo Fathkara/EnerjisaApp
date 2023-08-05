@@ -7,7 +7,7 @@
 
 import UIKit
 class CustomPopup: UIView {
-    
+    //MARK: - UI
     private var vectorImage: UIImageView = {
         let image = UIImageView()
         image.image = UIImage(named: "Vector")
@@ -42,7 +42,11 @@ class CustomPopup: UIView {
         return button
     }()
     
+    //MARK: - Properties
     var nexPage: (() -> Void)?
+    
+    
+    //MARK: - Init
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -56,6 +60,8 @@ class CustomPopup: UIView {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    //MARK: - Private Function
     
     func createPopup(dueDate:String) {
         titleLabel.text = "Son Ödeme Tarihi"
@@ -112,6 +118,9 @@ class CustomPopup: UIView {
         }
         
     }
+    
+    //MARK: - Target Function
+    
     @objc func clickButtonTapped() {
         nexPage?()
     }

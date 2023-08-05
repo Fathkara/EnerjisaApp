@@ -10,6 +10,8 @@ import SnapKit
 
 class CustomInfoView: UIView {
     
+    //MARK: - UI
+    
     let infoLabel: UILabel = {
         let label = UILabel()
         label.numberOfLines = 3
@@ -34,6 +36,10 @@ class CustomInfoView: UIView {
         return label
     }()
     
+    //MARK: - Properties
+    
+    //MARK: - Init
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         configure()
@@ -48,7 +54,9 @@ class CustomInfoView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func configure() {
+    //MARK: - Private Func
+    
+    private func configure() {
         addSubview(infoImage)
         addSubview(infoLabel)
         addSubview(totalLbl)

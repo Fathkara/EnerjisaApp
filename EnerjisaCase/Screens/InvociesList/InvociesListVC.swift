@@ -1,5 +1,5 @@
 //
-//  InvociesVC.swift
+//  InvoicesListVC.swift
 //  EnerjisaCase
 //
 //  Created by Fatih on 2.08.2023.
@@ -8,7 +8,7 @@
 import UIKit
 import SnapKit
 
-class InvociesListVC: UIViewController {
+class InvoicesListVC: UIViewController {
     
     //MARK: - Views
     
@@ -47,7 +47,7 @@ class InvociesListVC: UIViewController {
     var arrInvoice = [Invoice]()
     
     
-    var viewModel: InvociesListViewModelProtocol?
+    var viewModel: InvoicesListViewModelProtocol?
     
     //MARK: - Life Cycle
     
@@ -83,7 +83,7 @@ class InvociesListVC: UIViewController {
         parentStackView.addArrangedSubview(customStackView)
         parentStackView.addArrangedSubview(customSecondStackView)
         
-        viewModel?.loadInvocies()
+        viewModel?.loadInvoices()
         segueForDetail()
         
         makeConstraints()
@@ -122,7 +122,7 @@ class InvociesListVC: UIViewController {
     private func handleFisrtList() {
         guard let firstList = self.fetchFirstList(isFirst: true) else { return }
         guard let secondList = self.fetchFirstList(isFirst: false) else { return }
-        guard let invoicesData = viewModel?.getInvocies() else {return}
+        guard let invoicesData = viewModel?.getInvoices() else {return}
         
         customStackView.setupCosntraints(title: firstList.company ?? "", state: firstList.address ?? "", instNo: firstList.installationNumber ?? "", contNo: firstList.contractAccountNumber ?? "", price: firstList.amount ?? "")
         
@@ -132,8 +132,7 @@ class InvociesListVC: UIViewController {
     }
     
     func fetchFirstList(isFirst:Bool) -> List? {
-        
-        if let userInvoices = viewModel?.getInvocies(),  let lists = userInvoices.list, !lists.isEmpty {
+        if let userInvoices = viewModel?.getInvoices(),  let lists = userInvoices.list, !lists.isEmpty {
             if isFirst {
                 firstList = lists[0]
             }else {
@@ -146,10 +145,9 @@ class InvociesListVC: UIViewController {
     }
     
     
-    func segueForDetail() {
-        
+    private func segueForDetail() {
         customStackView.nexPage = { [self] in
-            if let userInvoices = self.viewModel?.getInvocies(),
+            if let userInvoices = self.viewModel?.getInvoices(),
                let lists = userInvoices.list,
                let invoices = userInvoices.invoices,
                !lists.isEmpty {
@@ -160,42 +158,42 @@ class InvociesListVC: UIViewController {
             }
             
             guard let firstList = self.firstList else { return }
-            let vc = InvociesDetailBuilder.make(listData: firstList, invoiceData: invoicesList!, arrInvoice: self.arrInvoice)
+            let vc = InvoicesDetailBuilder.make(listData: firstList, invoiceData: invoicesList!, arrInvoice: self.arrInvoice)
             vc.arrData = self.arrInvoice
             vc.fromHome = true
             self.show(vc, sender: nil)
         }
         
         customSecondStackView.nexPage = { [self] in
-            if let userInvoices = self.viewModel?.getInvocies(),
+            if let userInvoices = self.viewModel?.getInvoices(),
                let lists = userInvoices.list,
                let invoices = userInvoices.invoices,
                !lists.isEmpty {
                 self.firstList = lists[1]
                 self.invoicesList = invoices[4]
-                self.arrInvoice = userInvoices.invoices!  
+                self.arrInvoice = userInvoices.invoices!
                 navigationItem.title = ""
             }
             
             guard let firstList = self.firstList else { return }
-            let vc = InvociesDetailBuilder.make(listData: firstList, invoiceData: invoicesList!, arrInvoice: self.arrInvoice)
+            let vc = InvoicesDetailBuilder.make(listData: firstList, invoiceData: invoicesList!, arrInvoice: self.arrInvoice)
             vc.arrData = self.arrInvoice
             vc.fromHome = false
             self.show(vc, sender: nil)
         }
     }
-
+    
     
 }
 
 
 
-//MARK: InvociesViewModelDelegate
+//MARK: InvoicesViewModelDelegate
 
-extension InvociesListVC: InvociesViewModelDelegate {
-    func handleOutPut(outPut: InvociesListViewModelOutPut) {
+extension InvoicesListVC: InvoicesViewModelDelegate {
+    func handleOutPut(outPut: InvoicesListViewModelOutPut) {
         switch outPut {
-        case .invociesData(var userInvoicess):
+        case .invoicesData(var userInvoicess):
             print(userInvoicess)
             userInvoicess.invoices = self.arrInvoice
             handleFisrtList()
@@ -207,7 +205,7 @@ extension InvociesListVC: InvociesViewModelDelegate {
 
 //MARK: - Constraints
 
-extension InvociesListVC {
+extension InvoicesListVC {
     func makeConstraints() {
         
         
@@ -216,7 +214,7 @@ extension InvociesListVC {
             make.top.equalTo(view.safeAreaLayoutGuide)
             make.width.equalTo(view.frame.size.width)
         }
-                
+        
         parentStackView.snp.makeConstraints { make in
             make.top.bottom.leading.trailing.equalTo(scrollView)
             make.width.equalTo(scrollView.snp.width)

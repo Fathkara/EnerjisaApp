@@ -1,31 +1,31 @@
 //
-//  InvociesViewModel.swift
+//  InvoicesViewModel.swift
 //  EnerjisaCase
 //
 //  Created by Fatih on 2.08.2023.
 //
 
 import Foundation
-protocol InvociesListViewModelProtocol {
-    var delegate: InvociesViewModelDelegate? { get set}
-    func loadInvocies()
-    func getInvocies() -> UserInvoices?
+protocol InvoicesListViewModelProtocol {
+    var delegate: InvoicesViewModelDelegate? { get set}
+    func loadInvoices()
+    func getInvoices() -> UserInvoices?
 }
 
-enum InvociesListViewModelOutPut {
-    case invociesData(UserInvoices)
+enum InvoicesListViewModelOutPut {
+    case invoicesData(UserInvoices)
     case error(String)
 }
 
 
-protocol InvociesViewModelDelegate {
-    func handleOutPut(outPut: InvociesListViewModelOutPut)
+protocol InvoicesViewModelDelegate {
+    func handleOutPut(outPut: InvoicesListViewModelOutPut)
 }
 
-class InvociesListViewModel: InvociesListViewModelProtocol {
-    var delegate: InvociesViewModelDelegate?
+class InvoicesListViewModel: InvoicesListViewModelProtocol {
+    var delegate: InvoicesViewModelDelegate?
     var service: HttpClientProtocol?
-    var invociesData: UserInvoices?
+    var invoicesData: UserInvoices?
     
     init(service: HttpClientProtocol) {
         self.service = service
@@ -33,17 +33,17 @@ class InvociesListViewModel: InvociesListViewModelProtocol {
     
 }
 
-extension InvociesListViewModel {
-    func loadInvocies() {
-        service?.fetchAllData(onSuccess: { [delegate] invocies in
-            self.invociesData = invocies
-            delegate?.handleOutPut(outPut: .invociesData(invocies))
+extension InvoicesListViewModel {
+    func loadInvoices() {
+        service?.fetchAllData(onSuccess: { [delegate] invoices in
+            self.invoicesData = invoices
+            delegate?.handleOutPut(outPut: .invoicesData(invoices))
         }, onFailure: { [delegate]  error in
             delegate?.handleOutPut(outPut: .error(error))
         })
     }
     
-    func getInvocies() -> UserInvoices? {
-        invociesData
+    func getInvoices() -> UserInvoices? {
+        invoicesData
     }
 }

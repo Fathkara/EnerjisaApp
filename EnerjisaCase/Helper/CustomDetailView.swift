@@ -128,7 +128,6 @@ class CustomDetailView: UIView {
         let stackView = UIStackView()
         stackView.axis = .horizontal
         stackView.spacing = 8
-//        stackView.distribution = .fillProportionally
         stackView.alignment = .center
         return stackView
     }()
@@ -188,8 +187,6 @@ class CustomDetailView: UIView {
         self.backgroundColor = .white
 
         addSubview(parentStackView)
-//        parentStackView.addArrangedSubview(homeStackView)
-//        homeStackView.addArrangedSubview(titleLabel)
         parentStackView.addArrangedSubview(titleLabel)
         parentStackView.addArrangedSubview(firstLine)
         parentStackView.addArrangedSubview(streetStackView)
@@ -207,13 +204,8 @@ class CustomDetailView: UIView {
         contractNumberStackView.addArrangedSubview(contractAccountNumberLabel)
         contractNumberStackView.addArrangedSubview(contractAccountNumberNoLabel)
         contractNumberStackView.addArrangedSubview(copySecondImage)
-//        contractView.addSubview(copySecondImage)
 
         parentStackView.addArrangedSubview(thirdLine)
-//        parentStackView.addArrangedSubview(amountStackView)
-//        amountStackView.addArrangedSubview(amountLabel)
-//        amountStackView.addArrangedSubview(amountPriceLabel)
-//        parentStackView.addArrangedSubview(clickButton)
         parentStackView.addArrangedSubview(viewInfo)
         viewInfo.addSubview(customInfoView)
         
@@ -237,10 +229,6 @@ class CustomDetailView: UIView {
         clickButton.addTarget(self, action: #selector(clickButtonTapped), for: .touchUpInside)
       
     }
-     
-    @objc func clickButtonTapped() {
-        nexPage?()
-    }
     
     func setupCosntraints(title: String, state: String, instNo: String, contNo: String, isList: Bool = true) {
         titleLabel.text = title
@@ -256,8 +244,8 @@ class CustomDetailView: UIView {
         parentStackView.snp.makeConstraints { make in
             make.left.top.equalTo(self).offset(16)
             make.right.bottom.equalTo(self).offset(-16)
-            //make.bottom.equalTo(self).offset(16)
         }
+        
         firstLine.layer.borderColor = UIColor("#DADADA").cgColor
         firstLine.layer.borderWidth = 1
         firstLine.snp.makeConstraints { make in
@@ -284,36 +272,28 @@ class CustomDetailView: UIView {
             make.left.equalToSuperview()
             make.top.equalToSuperview().offset(-16)
         }
+        
         contractAccountNumberNoLabel.snp.makeConstraints { make in
             make.right.equalToSuperview().offset(-25)
             make.centerY.equalToSuperview()
         }
+        
         copySecondImage.snp.makeConstraints { make in
             make.left.equalTo(contractAccountNumberNoLabel.snp.right).offset(10)
             make.centerY.equalToSuperview()
             make.width.height.equalTo(15)
         }
-
-//
-//        descripionLabel.snp.makeConstraints { make in
-//            make.left.equalToSuperview()
-//            make.top.equalToSuperview().offset(-30)
-//
-//        }
-//        stateLabel.snp.makeConstraints { make in
-//            make.top.equalTo(descripionLabel.snp.bottom).offset(4)
-//            make.left.equalToSuperview()
-//            make.right.equalToSuperview()
-//        }
+        
         copySecondImage.snp.makeConstraints { make in
             make.right.equalToSuperview().offset(16)
             make.centerY.equalToSuperview()
-//            make.width.height.equalTo(15)
+
         }
         
         viewInfo.snp.makeConstraints { make in
             make.height.equalTo(128)
         }
+        
         customInfoView.snp.makeConstraints { make in
             make.top.equalTo(viewInfo)
             make.left.equalTo(viewInfo)
@@ -321,6 +301,9 @@ class CustomDetailView: UIView {
             make.height.equalTo(128)
         }
         
-        
+    }
+    //MARK: - Target Function
+    @objc func clickButtonTapped() {
+        nexPage?()
     }
 }

@@ -1,5 +1,5 @@
 //
-//  InvociesDetailVC.swift
+//  InvoicesDetailVC.swift
 //  EnerjisaCase
 //
 //  Created by Fatih on 2.08.2023.
@@ -9,7 +9,7 @@ import UIKit
 import PhoneNumberKit
 import SnapKit
 
-class InvociesDetailVC: UIViewController {
+class InvoicesDetailVC: UIViewController {
     
     //MARK: Views
     private lazy var scrollView: UIScrollView = {
@@ -173,7 +173,7 @@ class InvociesDetailVC: UIViewController {
     
     //MARK: Properties
     
-    var viewModel: InvociesDetailViewModelProtocol?
+    var viewModel: InvoicesDetailViewModelProtocol?
     private var customDetailView = CustomDetailView()
     private var customExcelView = ExcelStackView()
     private var popupView = CustomPopup()
@@ -194,7 +194,6 @@ class InvociesDetailVC: UIViewController {
     //MARK: Private Func
     
     private func configure() {
-        //        view.backgroundColor = .white
         navigationController?.navigationBar.backgroundColor = .systemOrange
         navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
         navigationController?.navigationBar.barTintColor = UIColor.systemOrange
@@ -215,7 +214,6 @@ class InvociesDetailVC: UIViewController {
         scrollView.addSubview(dueDateLabel)
         scrollView.addSubview(amountLabel)
         scrollView.addSubview(rightLineView)
-        
         nameTextfield.delegate = self
         identifyTextfield.delegate = self
         emailTextfield.delegate = self
@@ -266,8 +264,6 @@ class InvociesDetailVC: UIViewController {
         
     }
     
-    
-    
     private func determineInvoiceType(for invoice: Invoice) -> String? {
         if let installationNumber = invoice.installationNumber {
             if installationNumber == "4012312871" {
@@ -292,15 +288,11 @@ class InvociesDetailVC: UIViewController {
             customDetailView.customInfoView.createDetailView(info: info, price: invoicesListData.amount!)
             
         }
-        
-        
     }
-    
-    
 }
 //MARK: - PopupView
 
-extension InvociesDetailVC {
+extension InvoicesDetailVC {
     
     private func createBlur() {
         let blurEffect = UIBlurEffect(style: .dark)
@@ -396,7 +388,7 @@ extension InvociesDetailVC {
 
 //MARK: - Validation functions
 
-extension InvociesDetailVC {
+extension InvoicesDetailVC {
     private func isValidEmail(email: String) -> Bool {
         let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
         let emailPred = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
@@ -419,10 +411,10 @@ extension InvociesDetailVC {
     }
 }
 
-//MARK: - InvociesDetailViewModelDelegate
+//MARK: - InvoicesDetailViewModelDelegate
 
-extension InvociesDetailVC: InvociesDetailViewModelDelegate {
-    func handleOutPut(outPut: InvociesDetailOutPut) {
+extension InvoicesDetailVC: InvoicesDetailViewModelDelegate {
+    func handleOutPut(outPut: InvoicesDetailOutPut) {
         switch outPut {
         case .invoicesListData(let listData):
             setupIinvoices()
@@ -440,7 +432,7 @@ extension InvociesDetailVC: InvociesDetailViewModelDelegate {
 
 //MARK: - Constraints
 
-extension InvociesDetailVC {
+extension InvoicesDetailVC {
     
     func makeConstraints() {
         scrollView.snp.makeConstraints { make in
@@ -549,7 +541,7 @@ extension InvociesDetailVC {
 }
 
 //MARK: - TextfieldDelegate
-extension InvociesDetailVC: UITextFieldDelegate {
+extension InvoicesDetailVC: UITextFieldDelegate {
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         switch textField {
         case nameTextfield:

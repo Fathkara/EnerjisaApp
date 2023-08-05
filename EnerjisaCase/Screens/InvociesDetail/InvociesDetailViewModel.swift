@@ -1,5 +1,5 @@
 //
-//  InvociesDetailViewModel.swift
+//  InvoicesDetailViewModel.swift
 //  EnerjisaCase
 //
 //  Created by Fatih on 2.08.2023.
@@ -7,29 +7,29 @@
 
 import Foundation
 
-protocol InvociesDetailViewModelProtocol {
-    var view: InvociesDetailViewModelDelegate? { get set}
+protocol InvoicesDetailViewModelProtocol {
+    var view: InvoicesDetailViewModelDelegate? { get set}
     func loadInvoices()
     func getList() -> List?
     func getInvoices() -> Invoice?
 }
 
-enum InvociesDetailOutPut {
+enum InvoicesDetailOutPut {
     case invoicesListData(List)
     case invoicesData(Invoice)
 }
 
-protocol InvociesDetailViewModelDelegate {
-    func handleOutPut(outPut: InvociesDetailOutPut)
+protocol InvoicesDetailViewModelDelegate {
+    func handleOutPut(outPut: InvoicesDetailOutPut)
 }
 
-class InvociesDetailViewModel: InvociesDetailViewModelProtocol {
-    var view: InvociesDetailViewModelDelegate?
+class InvoicesDetailViewModel: InvoicesDetailViewModelProtocol {
+    var view: InvoicesDetailViewModelDelegate?
     var invoicesListData: List?
     var invoiceData: Invoice?
     var arrInvoice: [Invoice] = []
     
-    init(view: InvociesDetailViewModelDelegate, invoicesListData: List,invoiceData: Invoice,arrInvoice: [Invoice]) {
+    init(view: InvoicesDetailViewModelDelegate, invoicesListData: List,invoiceData: Invoice,arrInvoice: [Invoice]) {
         self.view = view
         self.invoicesListData = invoicesListData
         self.invoiceData = invoiceData
@@ -37,7 +37,7 @@ class InvociesDetailViewModel: InvociesDetailViewModelProtocol {
     }
 }
 
-extension InvociesDetailViewModel {
+extension InvoicesDetailViewModel {
     func loadInvoices() {
         guard let invoicesListData else { return }
         view?.handleOutPut(outPut: .invoicesListData(invoicesListData))

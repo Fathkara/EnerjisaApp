@@ -8,6 +8,8 @@
 import UIKit
 class ExcelStackView: UIView {
     
+    //MARK: - UI
+    
     private var parentStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .horizontal
@@ -64,9 +66,11 @@ class ExcelStackView: UIView {
         label.font = Font.custom(size: 16,fontWeight: .Medium)
         return label
     }()
-    
+    //MARK: - Properties
     var dueDate: String?
     
+    
+    //MARK: - Init
     override init(frame: CGRect) {
         super.init(frame: frame)
         configure()
@@ -82,7 +86,9 @@ class ExcelStackView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func configure() {
+    //MARK: - Private Function
+    
+    private func configure() {
         addSubview(parentStackView)
         parentStackView.addArrangedSubview(dueDateLabel)
         parentStackView.addArrangedSubview(firstLine)

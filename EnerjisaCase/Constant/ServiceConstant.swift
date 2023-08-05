@@ -12,10 +12,10 @@ final class ServiceConstant {
     enum serviceConstant: String {
         case baseUrl = "https://raw.githubusercontent.com/"
         case pathUrl = "bydevelopertr/enerjisa/main/"
-        case invociesUrl = "userInvoices.json"
+        case invoicesUrl = "userInvoices.json"
         
-        static func invociesPath() -> String {
-            return "\(baseUrl.rawValue)\(pathUrl.rawValue)\(invociesUrl.rawValue)"
+        static func invoicesPath() -> String {
+            return "\(baseUrl.rawValue)\(pathUrl.rawValue)\(invoicesUrl.rawValue)"
         }
     }
 }

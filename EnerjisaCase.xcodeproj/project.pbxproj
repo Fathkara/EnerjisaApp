@@ -198,9 +198,9 @@
 				3D474B442A7AFF49006D64E4 /* CustomStackView.swift */,
 				3D6443362A7D19C1002BDADA /* CustomInfoView.swift */,
 				3D6443382A7D19D0002BDADA /* CustomDetailView.swift */,
-				3D474B462A7B86C9006D64E4 /* UIColor.swift */,
 				3D64433A2A7D3101002BDADA /* CustomExcelView.swift */,
 				3DF59D522A7E680600A4705E /* CustomPopUp.swift */,
+				3D474B462A7B86C9006D64E4 /* UIColor.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
