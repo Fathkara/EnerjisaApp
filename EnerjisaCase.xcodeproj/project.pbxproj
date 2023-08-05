@@ -15,13 +15,13 @@
 		3D474B282A7ACF71006D64E4 /* UserInvoices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D474B272A7ACF71006D64E4 /* UserInvoices.swift */; };
 		3D474B2B2A7ACFE9006D64E4 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 3D474B2A2A7ACFE9006D64E4 /* Alamofire */; };
 		3D474B2E2A7AD000006D64E4 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 3D474B2D2A7AD000006D64E4 /* SnapKit */; };
-		3D474B322A7AD180006D64E4 /* InvociesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D474B312A7AD180006D64E4 /* InvociesViewModel.swift */; };
-		3D474B342A7AD18D006D64E4 /* InvociesListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D474B332A7AD18D006D64E4 /* InvociesListVC.swift */; };
-		3D474B362A7AD196006D64E4 /* InvociesListBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D474B352A7AD196006D64E4 /* InvociesListBuilder.swift */; };
+		3D474B322A7AD180006D64E4 /* InvoicesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D474B312A7AD180006D64E4 /* InvoicesViewModel.swift */; };
+		3D474B342A7AD18D006D64E4 /* InvoicesListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D474B332A7AD18D006D64E4 /* InvoicesListVC.swift */; };
+		3D474B362A7AD196006D64E4 /* InvoicesListBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D474B352A7AD196006D64E4 /* InvoicesListBuilder.swift */; };
 		3D474B392A7AD6D0006D64E4 /* ServiceConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D474B382A7AD6D0006D64E4 /* ServiceConstant.swift */; };
-		3D474B3C2A7AD845006D64E4 /* InvociesDetailBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D474B3B2A7AD845006D64E4 /* InvociesDetailBuilder.swift */; };
-		3D474B3E2A7AD84D006D64E4 /* InvociesDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D474B3D2A7AD84D006D64E4 /* InvociesDetailViewModel.swift */; };
-		3D474B402A7AD857006D64E4 /* InvociesDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D474B3F2A7AD857006D64E4 /* InvociesDetailVC.swift */; };
+		3D474B3C2A7AD845006D64E4 /* InvoicesDetailBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D474B3B2A7AD845006D64E4 /* InvoicesDetailBuilder.swift */; };
+		3D474B3E2A7AD84D006D64E4 /* InvoicesDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D474B3D2A7AD84D006D64E4 /* InvoicesDetailViewModel.swift */; };
+		3D474B402A7AD857006D64E4 /* InvoicesDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D474B3F2A7AD857006D64E4 /* InvoicesDetailVC.swift */; };
 		3D474B452A7AFF49006D64E4 /* CustomStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D474B442A7AFF49006D64E4 /* CustomStackView.swift */; };
 		3D474B472A7B86C9006D64E4 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D474B462A7B86C9006D64E4 /* UIColor.swift */; };
 		3D474B4A2A7BB004006D64E4 /* Hind-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3D474B492A7BB004006D64E4 /* Hind-Bold.ttf */; };
@@ -46,13 +46,13 @@
 		3D474B192A7ACCCF006D64E4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3D474B252A7ACE28006D64E4 /* HttpClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpClient.swift; sourceTree = "<group>"; };
 		3D474B272A7ACF71006D64E4 /* UserInvoices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInvoices.swift; sourceTree = "<group>"; };
-		3D474B312A7AD180006D64E4 /* InvociesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvociesViewModel.swift; sourceTree = "<group>"; };
-		3D474B332A7AD18D006D64E4 /* InvociesListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvociesListVC.swift; sourceTree = "<group>"; };
-		3D474B352A7AD196006D64E4 /* InvociesListBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvociesListBuilder.swift; sourceTree = "<group>"; };
+		3D474B312A7AD180006D64E4 /* InvoicesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvoicesViewModel.swift; sourceTree = "<group>"; };
+		3D474B332A7AD18D006D64E4 /* InvoicesListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvoicesListVC.swift; sourceTree = "<group>"; };
+		3D474B352A7AD196006D64E4 /* InvoicesListBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvoicesListBuilder.swift; sourceTree = "<group>"; };
 		3D474B382A7AD6D0006D64E4 /* ServiceConstant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceConstant.swift; sourceTree = "<group>"; };
-		3D474B3B2A7AD845006D64E4 /* InvociesDetailBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvociesDetailBuilder.swift; sourceTree = "<group>"; };
-		3D474B3D2A7AD84D006D64E4 /* InvociesDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvociesDetailViewModel.swift; sourceTree = "<group>"; };
-		3D474B3F2A7AD857006D64E4 /* InvociesDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvociesDetailVC.swift; sourceTree = "<group>"; };
+		3D474B3B2A7AD845006D64E4 /* InvoicesDetailBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvoicesDetailBuilder.swift; sourceTree = "<group>"; };
+		3D474B3D2A7AD84D006D64E4 /* InvoicesDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvoicesDetailViewModel.swift; sourceTree = "<group>"; };
+		3D474B3F2A7AD857006D64E4 /* InvoicesDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvoicesDetailVC.swift; sourceTree = "<group>"; };
 		3D474B442A7AFF49006D64E4 /* CustomStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomStackView.swift; sourceTree = "<group>"; };
 		3D474B462A7B86C9006D64E4 /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
 		3D474B492A7BB004006D64E4 /* Hind-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Hind-Bold.ttf"; sourceTree = "<group>"; };
@@ -157,20 +157,10 @@
 		3D474B2F2A7AD159006D64E4 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
-				3D474B3A2A7AD829006D64E4 /* InvociesDetail */,
-				3D474B302A7AD167006D64E4 /* InvociesList */,
+				3DF59D552A7ED02B00A4705E /* InvoicesList */,
+				3D474B3A2A7AD829006D64E4 /* InvoicesDetail */,
 			);
 			path = Screens;
-			sourceTree = "<group>";
-		};
-		3D474B302A7AD167006D64E4 /* InvociesList */ = {
-			isa = PBXGroup;
-			children = (
-				3D474B312A7AD180006D64E4 /* InvociesViewModel.swift */,
-				3D474B332A7AD18D006D64E4 /* InvociesListVC.swift */,
-				3D474B352A7AD196006D64E4 /* InvociesListBuilder.swift */,
-			);
-			path = InvociesList;
 			sourceTree = "<group>";
 		};
 		3D474B372A7AD6BF006D64E4 /* Constant */ = {
@@ -181,14 +171,14 @@
 			path = Constant;
 			sourceTree = "<group>";
 		};
-		3D474B3A2A7AD829006D64E4 /* InvociesDetail */ = {
+		3D474B3A2A7AD829006D64E4 /* InvoicesDetail */ = {
 			isa = PBXGroup;
 			children = (
-				3D474B3B2A7AD845006D64E4 /* InvociesDetailBuilder.swift */,
-				3D474B3F2A7AD857006D64E4 /* InvociesDetailVC.swift */,
-				3D474B3D2A7AD84D006D64E4 /* InvociesDetailViewModel.swift */,
+				3D474B3B2A7AD845006D64E4 /* InvoicesDetailBuilder.swift */,
+				3D474B3D2A7AD84D006D64E4 /* InvoicesDetailViewModel.swift */,
+				3D474B3F2A7AD857006D64E4 /* InvoicesDetailVC.swift */,
 			);
-			path = InvociesDetail;
+			path = InvoicesDetail;
 			sourceTree = "<group>";
 		};
 		3D474B412A7AFCC2006D64E4 /* Helper */ = {
@@ -216,6 +206,16 @@
 				3D474B532A7BB0E1006D64E4 /* Font.swift */,
 			);
 			path = Fonts;
+			sourceTree = "<group>";
+		};
+		3DF59D552A7ED02B00A4705E /* InvoicesList */ = {
+			isa = PBXGroup;
+			children = (
+				3D474B352A7AD196006D64E4 /* InvoicesListBuilder.swift */,
+				3D474B312A7AD180006D64E4 /* InvoicesViewModel.swift */,
+				3D474B332A7AD18D006D64E4 /* InvoicesListVC.swift */,
+			);
+			path = InvoicesList;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -303,24 +303,24 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3D474B342A7AD18D006D64E4 /* InvociesListVC.swift in Sources */,
+				3D474B342A7AD18D006D64E4 /* InvoicesListVC.swift in Sources */,
 				3D6443372A7D19C1002BDADA /* CustomInfoView.swift in Sources */,
 				3D6443392A7D19D0002BDADA /* CustomDetailView.swift in Sources */,
 				3D474B472A7B86C9006D64E4 /* UIColor.swift in Sources */,
 				3D474B542A7BB0E1006D64E4 /* Font.swift in Sources */,
-				3D474B362A7AD196006D64E4 /* InvociesListBuilder.swift in Sources */,
+				3D474B362A7AD196006D64E4 /* InvoicesListBuilder.swift in Sources */,
 				3D474B282A7ACF71006D64E4 /* UserInvoices.swift in Sources */,
 				3DF59D532A7E680600A4705E /* CustomPopUp.swift in Sources */,
 				3D474B392A7AD6D0006D64E4 /* ServiceConstant.swift in Sources */,
 				3D474B0C2A7ACCCE006D64E4 /* AppDelegate.swift in Sources */,
-				3D474B3E2A7AD84D006D64E4 /* InvociesDetailViewModel.swift in Sources */,
-				3D474B402A7AD857006D64E4 /* InvociesDetailVC.swift in Sources */,
+				3D474B3E2A7AD84D006D64E4 /* InvoicesDetailViewModel.swift in Sources */,
+				3D474B402A7AD857006D64E4 /* InvoicesDetailVC.swift in Sources */,
 				3D474B262A7ACE28006D64E4 /* HttpClient.swift in Sources */,
 				3D64433B2A7D3101002BDADA /* CustomExcelView.swift in Sources */,
-				3D474B3C2A7AD845006D64E4 /* InvociesDetailBuilder.swift in Sources */,
+				3D474B3C2A7AD845006D64E4 /* InvoicesDetailBuilder.swift in Sources */,
 				3D474B452A7AFF49006D64E4 /* CustomStackView.swift in Sources */,
 				3D474B0E2A7ACCCE006D64E4 /* SceneDelegate.swift in Sources */,
-				3D474B322A7AD180006D64E4 /* InvociesViewModel.swift in Sources */,
+				3D474B322A7AD180006D64E4 /* InvoicesViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
