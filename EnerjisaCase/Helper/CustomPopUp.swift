@@ -42,6 +42,8 @@ class CustomPopup: UIView {
         return button
     }()
     
+    var nexPage: (() -> Void)?
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         configure()
@@ -93,6 +95,7 @@ class CustomPopup: UIView {
         gradientLayer.startPoint = CGPoint(x: 0.5, y: 0.0)
         gradientLayer.endPoint = CGPoint(x: 0.5, y: 1.0)
         clickButton.layer.insertSublayer(gradientLayer, at: 0)
+        clickButton.addTarget(self, action: #selector(clickButtonTapped), for: .touchUpInside)
         clickButton.snp.makeConstraints { make in
             make.top.equalTo(descriptionLabel.snp.bottom).offset(20)
             make.left.equalToSuperview().offset(20)
@@ -100,5 +103,8 @@ class CustomPopup: UIView {
             make.height.equalTo(50)
         }
         
+    }
+    @objc func clickButtonTapped() {
+        nexPage?()
     }
 }

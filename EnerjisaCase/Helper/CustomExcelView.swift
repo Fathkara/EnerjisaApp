@@ -30,7 +30,7 @@ class ExcelStackView: UIView {
         return view
     }()
     
-    private var dueDateLabel: UILabel = {
+    var dueDateLabel: UILabel = {
         let label = UILabel()
         label.textAlignment = .left
         label.textColor = UIColor("#444444")

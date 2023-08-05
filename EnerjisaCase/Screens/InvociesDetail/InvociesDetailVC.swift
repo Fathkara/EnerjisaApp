@@ -326,19 +326,43 @@ extension InvociesDetailVC {
         popupView.layer.cornerRadius = 20
         self.popupView.backgroundColor = UIColor("#FFFFFF")
         view.addSubview(popupView)
-        popupView.createPopup(dueDate: "43234")
+        guard let invoicesListData = viewModel?.getInvoices() else { return }
+        popupView.createPopup(dueDate:invoicesListData.dueDate! )
         popupView.snp.makeConstraints { make in
             make.center.equalToSuperview()
             make.width.equalTo(335)
             make.height.equalTo(339)
         }
         
+        
         createBlur()
+        popupView.isHidden = false
+        backgroundControl.isHidden = false
     }
     
-    @objc func clickBtnTapped() {
+    @objc func clickBtnTapped(sender: UITapGestureRecognizer) {
+        
         createPopup()
+        hiddenPopup()
+        
     }
+    
+    func hiddenPopup() {
+        self.popupView.nexPage = {
+            self.removeBlur()
+        }
+    }
+
+    private func removeBlur() {
+        for subview in view.subviews {
+            if let blurEffectView = subview as? UIVisualEffectView {
+                blurEffectView.removeFromSuperview()
+                backgroundControl.isHidden = true
+                popupView.isHidden = true
+            }
+        }
+    }
+
     
 }
 
