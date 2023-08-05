@@ -57,13 +57,15 @@ class ExcelStackView: UIView {
         return image
     }()
     
-    private var paymentLabel: UILabel = {
+    var paymentLabel: UILabel = {
         let label = UILabel()
         label.textAlignment = .left
         label.textColor = UIColor("#444444")
         label.font = Font.custom(size: 16,fontWeight: .Medium)
         return label
     }()
+    
+
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -91,6 +93,8 @@ class ExcelStackView: UIView {
         parentStackView.addArrangedSubview(paymentLabel)
         parentStackView.addArrangedSubview(showImage)
         makeConstraints()
+        
+
     }
     
     func handleData(dueDate:String,price:String) {
@@ -131,6 +135,8 @@ class ExcelStackView: UIView {
         }
 
     }
+    
+    
     
 
 }

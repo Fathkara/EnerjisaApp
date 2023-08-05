@@ -147,6 +147,7 @@ class InvociesListVC: UIViewController {
     
     
     func segueForDetail() {
+        
         customStackView.nexPage = { [self] in
             if let userInvoices = self.viewModel?.getInvocies(),
                let lists = userInvoices.list,
@@ -215,7 +216,7 @@ extension InvociesListVC {
             make.top.equalTo(view.safeAreaLayoutGuide)
             make.width.equalTo(view.frame.size.width)
         }
-        
+                
         parentStackView.snp.makeConstraints { make in
             make.top.bottom.leading.trailing.equalTo(scrollView)
             make.width.equalTo(scrollView.snp.width)

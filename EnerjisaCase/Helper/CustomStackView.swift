@@ -47,7 +47,7 @@ class CustomStackView: UIView {
         return label
     }()
     
-    private var descripionLabel: UILabel = {
+    private var descriptionLabel: UILabel = {
         let label = UILabel()
         label.textAlignment = .left
         label.textColor = UIColor("#444444")
@@ -203,12 +203,10 @@ class CustomStackView: UIView {
         self.backgroundColor = .white
 
         addSubview(parentStackView)
-//        parentStackView.addArrangedSubview(homeStackView)
-//        homeStackView.addArrangedSubview(titleLabel)
         parentStackView.addArrangedSubview(titleLabel)
         parentStackView.addArrangedSubview(firstLine)
         parentStackView.addArrangedSubview(streetStackView)
-        streetStackView.addArrangedSubview(descripionLabel)
+        streetStackView.addArrangedSubview(descriptionLabel)
         streetStackView.addArrangedSubview(stateLabel)
         
         parentStackView.addArrangedSubview(secondLine)
@@ -222,7 +220,6 @@ class CustomStackView: UIView {
         contractNumberStackView.addArrangedSubview(contractAccountNumberLabel)
         contractNumberStackView.addArrangedSubview(contractAccountNumberNoLabel)
         contractNumberStackView.addArrangedSubview(copySecondImage)
-//        contractView.addSubview(copySecondImage)
 
         parentStackView.addArrangedSubview(thirdLine)
         parentStackView.addArrangedSubview(amountStackView)
@@ -258,7 +255,7 @@ class CustomStackView: UIView {
     
     func setupCosntraints(title: String, state: String, instNo: String, contNo: String, price: String, isList: Bool = true) {
         titleLabel.text = title
-        descripionLabel.text = "Adress:"
+        descriptionLabel.text = "Adress:"
         stateLabel.text = state
         installationNumberLabel.text = "Tesisat Numarasi:"
         installationNumberNoLabel.text = instNo
@@ -268,32 +265,10 @@ class CustomStackView: UIView {
         amountPriceLabel.text = price
         copyImage.image = UIImage(named: "copy")
         copySecondImage.image = UIImage(named: "copy_")
-//        customInfoView.createView(info: 2, price: "20")
-//        
-//        if isList {
-//            
-//            customInfoView.isHidden = true
-//            clickButton.isHidden = false
-//            amountStackView.isHidden = false
-//            amountLabel.isHidden = false
-//            amountPriceLabel.isHidden = false
-//        }else{
-//            customInfoView.isHidden = false
-//
-//            clickButton.removeFromSuperview()
-//            amountStackView.removeFromSuperview()
-//            amountLabel.removeFromSuperview()
-//            amountPriceLabel.removeFromSuperview()
-//            clickButton.isHidden = true
-//            amountStackView.isHidden = true
-//            amountLabel.isHidden = true
-//            amountPriceLabel.isHidden = true
-//        }
-  
+
         parentStackView.snp.makeConstraints { make in
             make.left.top.equalTo(self).offset(16)
             make.right.bottom.equalTo(self).offset(-16)
-            //make.bottom.equalTo(self).offset(16)
         }
         firstLine.layer.borderColor = UIColor("#DADADA").cgColor
         firstLine.layer.borderWidth = 1
@@ -330,21 +305,11 @@ class CustomStackView: UIView {
             make.centerY.equalToSuperview()
             make.width.height.equalTo(15)
         }
-//
-//        descripionLabel.snp.makeConstraints { make in
-//            make.left.equalToSuperview()
-//            make.top.equalToSuperview().offset(-30)
-//
-//        }
-//        stateLabel.snp.makeConstraints { make in
-//            make.top.equalTo(descripionLabel.snp.bottom).offset(4)
-//            make.left.equalToSuperview()
-//            make.right.equalToSuperview()
-//        }
+
         copySecondImage.snp.makeConstraints { make in
             make.right.equalToSuperview().offset(16)
             make.centerY.equalToSuperview()
-//            make.width.height.equalTo(15)
+
         }
         
         

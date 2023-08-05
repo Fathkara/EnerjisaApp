@@ -34,6 +34,7 @@
 		3D6443372A7D19C1002BDADA /* CustomInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D6443362A7D19C1002BDADA /* CustomInfoView.swift */; };
 		3D6443392A7D19D0002BDADA /* CustomDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D6443382A7D19D0002BDADA /* CustomDetailView.swift */; };
 		3D64433B2A7D3101002BDADA /* CustomExcelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D64433A2A7D3101002BDADA /* CustomExcelView.swift */; };
+		3DF59D532A7E680600A4705E /* CustomPopUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF59D522A7E680600A4705E /* CustomPopUp.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -63,6 +64,7 @@
 		3D6443362A7D19C1002BDADA /* CustomInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomInfoView.swift; sourceTree = "<group>"; };
 		3D6443382A7D19D0002BDADA /* CustomDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomDetailView.swift; sourceTree = "<group>"; };
 		3D64433A2A7D3101002BDADA /* CustomExcelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomExcelView.swift; sourceTree = "<group>"; };
+		3DF59D522A7E680600A4705E /* CustomPopUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomPopUp.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -198,6 +200,7 @@
 				3D6443382A7D19D0002BDADA /* CustomDetailView.swift */,
 				3D474B462A7B86C9006D64E4 /* UIColor.swift */,
 				3D64433A2A7D3101002BDADA /* CustomExcelView.swift */,
+				3DF59D522A7E680600A4705E /* CustomPopUp.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -307,6 +310,7 @@
 				3D474B542A7BB0E1006D64E4 /* Font.swift in Sources */,
 				3D474B362A7AD196006D64E4 /* InvociesListBuilder.swift in Sources */,
 				3D474B282A7ACF71006D64E4 /* UserInvoices.swift in Sources */,
+				3DF59D532A7E680600A4705E /* CustomPopUp.swift in Sources */,
 				3D474B392A7AD6D0006D64E4 /* ServiceConstant.swift in Sources */,
 				3D474B0C2A7ACCCE006D64E4 /* AppDelegate.swift in Sources */,
 				3D474B3E2A7AD84D006D64E4 /* InvociesDetailViewModel.swift in Sources */,

@@ -7,6 +7,7 @@
 
 import UIKit
 import PhoneNumberKit
+import SnapKit
 
 class InvociesDetailVC: UIViewController {
     
@@ -18,16 +19,8 @@ class InvociesDetailVC: UIViewController {
         scrollView.backgroundColor = .white
         scrollView.isScrollEnabled = true
         scrollView.contentSize = CGSize(width: 0, height: view.frame.size.height)
+        
         return scrollView
-    }()
-    
-    private var parentStackView: UIStackView = {
-        let stackView = UIStackView()
-        stackView.translatesAutoresizingMaskIntoConstraints = false
-        stackView.axis = .vertical
-        stackView.alignment = .lastBaseline
-        stackView.distribution = .equalSpacing
-        return stackView
     }()
     
     private var titleLabel: UILabel = {
@@ -170,29 +163,39 @@ class InvociesDetailVC: UIViewController {
         view.layer.borderColor =  UIColor("#F3F3F3").cgColor
         return view
     }()
-
-        
+    
+    private var backgroundControl: UIControl = {
+        let control = UIControl()
+        control.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.5)
+        control.isUserInteractionEnabled = false // Popup'ın altındaki bileşenlerle etkileşimi engellemek
+        return control
+    }()
+    
+    
     //MARK: Properties
     
     var viewModel: InvociesDetailViewModelProtocol?
     private var customDetailView = CustomDetailView()
     private var customExcelView = ExcelStackView()
+    private var popupView = CustomPopup()
     var arrData = [Invoice]()
     var fromHome = false
-
+    var blurEffectView: UIVisualEffectView?
+    
+    
     //MARK: Life Cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         configure()
-        print(arrData)
+        
     }
     
     //MARK: Private Func
     
     private func configure() {
-        view.backgroundColor = .white
+        //        view.backgroundColor = .white
         navigationController?.navigationBar.backgroundColor = .systemOrange
         navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
         navigationController?.navigationBar.barTintColor = UIColor.systemOrange
@@ -213,48 +216,58 @@ class InvociesDetailVC: UIViewController {
         scrollView.addSubview(dueDateLabel)
         scrollView.addSubview(amountLabel)
         scrollView.addSubview(rightLineView)
+        //       view.addSubview(popupView)
+        //       popupView.backgroundColor = .white
+        
+        
+        
         nameTextfield.delegate = self
         identifyTextfield.delegate = self
         emailTextfield.delegate = self
         phoneNumberTextfield.delegate = self
-        
         viewModel?.loadInvoices()
         makeConstraints()
         showInvoicesDetail()
+        
     }
+   
+    
+    
     private func showInvoicesDetail() {
         guard !arrData.isEmpty else { return }
-
+        
         let stackView = UIStackView()
         stackView.axis = .vertical
         stackView.distribution = .fillEqually
-        stackView.spacing = 12
+        stackView.spacing = 4
         scrollView.addSubview(stackView)
         stackView.snp.makeConstraints { make in
             make.top.equalTo(dueDateLabel.snp.bottom).offset(17)
-            make.left.equalTo(scrollView).offset(30)
-            make.right.equalTo(scrollView).offset(-30)
+            make.left.equalToSuperview().offset(30)
+            make.right.equalToSuperview().offset(-30)
             make.bottom.equalTo(scrollView).offset(-20)
         }
-
-        // arrData içindeki her bir fatura için ExcelStackView oluştur ve stackView içine ekleyin
+        
         for invoice in arrData {
             guard let invoiceType = determineInvoiceType(for: invoice) else { continue }
             guard (invoiceType == "Ev" && fromHome) || (invoiceType == "İş Yeri" && !fromHome) else { continue }
-
+            
             let excelStackView = ExcelStackView()
+            let gesture = UITapGestureRecognizer(target: self, action: #selector(clickBtnTapped))
+            excelStackView.paymentLabel.isUserInteractionEnabled = true
+            excelStackView.paymentLabel.addGestureRecognizer(gesture)
             excelStackView.handleData(dueDate: invoice.dueDate ?? "", price: invoice.amount ?? "")
             stackView.addArrangedSubview(excelStackView)
-
+            
             excelStackView.snp.makeConstraints { make in
                 make.height.equalTo(50)
                 
             }
         }
     }
-
-
-
+    
+    
+    
     private func determineInvoiceType(for invoice: Invoice) -> String? {
         if let installationNumber = invoice.installationNumber {
             if installationNumber == "4012312871" {
@@ -263,19 +276,75 @@ class InvociesDetailVC: UIViewController {
                 return "İş Yeri"
             }
         }
-
+        
         return nil
     }
-
+    
     private func setupIinvoices() {
         guard let invoicesListData = viewModel?.getList() else { return }
-        guard let invoicesData = viewModel?.getInvoices() else {return}
         customDetailView.setupCosntraints(title: invoicesListData.company ?? "", state: invoicesListData.address ?? "", instNo: invoicesListData.installationNumber ?? "", contNo: invoicesListData.contractAccountNumber!,  isList: false)
-        customDetailView.customInfoView.createDetailView(info: 1, price: invoicesListData.amount!)
-//        customExcelView.handleData(dueDate: invoicesData.dueDate!, price: invoicesData.amount!)
+        if fromHome {
+            let info = 4
+            customDetailView.customInfoView.createDetailView(info: info, price: invoicesListData.amount!)
+            
+        }else {
+            let info = 5
+            customDetailView.customInfoView.createDetailView(info: info, price: invoicesListData.amount!)
+            
+        }
+        
         
     }
+    
+    
+}
+//MARK: - PopupView
 
+extension InvociesDetailVC {
+    
+    private func createBlur() {
+        let blurEffect = UIBlurEffect(style: .dark)
+        blurEffectView = UIVisualEffectView(effect: blurEffect)
+        blurEffectView?.backgroundColor = .black
+        blurEffectView?.layer.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.5).cgColor
+        blurEffectView?.frame = CGRect(x: 0, y: 0, width: view.frame.size.width, height: view.frame.size.height * 0.719)
+        blurEffectView?.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        blurEffectView?.alpha = 0.64
+        view.addSubview(self.blurEffectView!)
+        blurEffectView?.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
+        }
+        view.sendSubviewToBack(blurEffectView!)
+        
+        view.addSubview(backgroundControl)
+        backgroundControl.frame = view.bounds
+        view.bringSubviewToFront(backgroundControl)
+        view.bringSubviewToFront(popupView)
+    }
+    
+    private func createPopup() {
+        popupView.layer.cornerRadius = 20
+        self.popupView.backgroundColor = UIColor("#FFFFFF")
+        view.addSubview(popupView)
+        popupView.createPopup(dueDate: "43234")
+        popupView.snp.makeConstraints { make in
+            make.center.equalToSuperview()
+            make.width.equalTo(335)
+            make.height.equalTo(339)
+        }
+        
+        createBlur()
+    }
+    
+    @objc func clickBtnTapped() {
+        createPopup()
+    }
+    
+}
+
+//MARK: - Validation functions
+
+extension InvociesDetailVC {
     private func isValidEmail(email: String) -> Bool {
         let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
         let emailPred = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
@@ -296,9 +365,9 @@ class InvociesDetailVC: UIViewController {
         let isValidID = nationalIDTest.evaluate(with: nationalID)
         return isValidID
     }
-    
-    
 }
+
+//MARK: - InvociesDetailViewModelDelegate
 
 extension InvociesDetailVC: InvociesDetailViewModelDelegate {
     func handleOutPut(outPut: InvociesDetailOutPut) {
@@ -308,11 +377,14 @@ extension InvociesDetailVC: InvociesDetailViewModelDelegate {
             print(listData)
         case .invoicesData(let listInvoice):
             print(listInvoice)
-            setupIinvoices()
-
+            
+            
         }
     }
 }
+
+
+
 
 //MARK: - Constraints
 
@@ -404,13 +476,13 @@ extension InvociesDetailVC {
         dueDateLabel.snp.makeConstraints { make in
             make.top.equalTo(customDetailView.snp.bottom).offset(20)
             make.left.equalTo(leftLineView.snp.right).offset(23)
-
+            
         }
         
         amountLabel.snp.makeConstraints { make in
             make.top.equalTo(customDetailView.snp.bottom).offset(20)
             make.left.equalTo(dueDateLabel.snp.right).offset(35)
-
+            
         }
         
         rightLineView.snp.makeConstraints { make in
@@ -420,17 +492,11 @@ extension InvociesDetailVC {
             make.width.equalTo(1)
             
         }
-//
-//        customExcelView.snp.makeConstraints { make in
-//            make.top.equalTo(dueDateLabel.snp.bottom).offset(17)
-//            make.left.equalToSuperview().offset(30)
-//            make.right.equalToSuperview().offset(-30)
-//            make.height.equalTo(50)
-//        }
+        
     }
 }
 
-
+//MARK: - TextfieldDelegate
 extension InvociesDetailVC: UITextFieldDelegate {
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         switch textField {
