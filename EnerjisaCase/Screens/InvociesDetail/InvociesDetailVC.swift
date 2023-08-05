@@ -326,7 +326,6 @@ extension InvoicesDetailVC {
             make.height.equalTo(339)
         }
         
-        
         createBlur()
         popupView.isHidden = false
         backgroundControl.isHidden = false
@@ -403,10 +402,10 @@ extension InvoicesDetailVC {
         return false
     }
     
-    private func isValidIdentifyID(_ nationalID: String) -> Bool {
-        let nationalIDRegex = "^[1-9]{1}[0-9]{9}[0-9]{1}$"
-        let nationalIDTest = NSPredicate(format: "SELF MATCHES %@", nationalIDRegex)
-        let isValidID = nationalIDTest.evaluate(with: nationalID)
+    private func isValidIdentifyID(_ identifyID: String) -> Bool {
+        let identifyRegex = "^[1-9]{1}[0-9]{9}[0-9]{1}$"
+        let identifyIDTest = NSPredicate(format: "SELF MATCHES %@", identifyRegex)
+        let isValidID = identifyIDTest.evaluate(with: identifyID)
         return isValidID
     }
 }
@@ -541,6 +540,7 @@ extension InvoicesDetailVC {
 }
 
 //MARK: - TextfieldDelegate
+
 extension InvoicesDetailVC: UITextFieldDelegate {
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         switch textField {
@@ -597,6 +597,7 @@ extension InvoicesDetailVC: UITextFieldDelegate {
                 textField.layer.borderWidth = 2
                 return false
             }
+            
         } else if textField == phoneNumberTextfield {
             guard let phoneNumber = textField.text else { return true }
             
@@ -615,6 +616,5 @@ extension InvoicesDetailVC: UITextFieldDelegate {
         
         return true
     }
-    
     
 }
