@@ -14,7 +14,6 @@
 - Delegate
 
 ## Screenshots
-<img src="https://github.com/Fathkara/EnerjisaApp/assets/107872054/a276b2cb-fc0c-4d30-ac55-d270259ebd97" alt="1" width="300" height="300">
-
+<img src="https://github.com/Fathkara/EnerjisaApp/assets/107872054/0607c3f1-f7b0-4d6e-b384-d8b56b7c4f0c" alt="1" width="400" height="250">
 
 
