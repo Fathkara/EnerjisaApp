@@ -17,7 +17,7 @@
 
 ### Evim 
 
-<div style="display: flex; gap: 10px;">
+<div style="display: flex; flex-wrap: wrap; gap: 10px;">
   <img src="https://github.com/Fathkara/EnerjisaApp/assets/107872054/a3e4704a-f5df-4bbd-b56f-220d00547300" alt="1" width="200" height="400">
   <img src="https://github.com/Fathkara/EnerjisaApp/assets/107872054/e45ccd0f-af2b-4461-827b-10be8781388f" alt="2" width="200" height="400">
   <img src="https://github.com/Fathkara/EnerjisaApp/assets/107872054/a46d48a0-63ca-4c91-9357-21d679ccdd16" alt="3" width="200" height="400">
@@ -28,7 +28,7 @@
 
 ### İş Yerim
 
-<div style="display: flex; gap: 10px;">
+<div style="display: flex; flex-wrap: wrap; gap: 10px;">
   <img src="https://github.com/Fathkara/EnerjisaApp/assets/107872054/4b1b795b-3bd6-4ad1-bb66-b831a4015024" alt="6" width="200" height="400">
   <img src="https://github.com/Fathkara/EnerjisaApp/assets/107872054/3a34a7dc-1de7-4559-ba65-3a0b8d706f38" alt="7" width="200" height="400">
   <img src="https://github.com/Fathkara/EnerjisaApp/assets/107872054/4c94a748-e9c3-4925-a8be-e73aa56cc93a" alt="8" width="200" height="400">
