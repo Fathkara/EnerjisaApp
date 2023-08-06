@@ -14,4 +14,5 @@
 - Delegate
 
 ## Screenshots
-/Users/fatih/Desktop/screenshot/ev/Simulator Screenshot - iPhone 14 Pro - 2023-08-06 at 15.23.41.png
+![1](https://github.com/Fathkara/MVVM-MovieApp/assets/107872054/a276b2cb-fc0c-4d30-ac55-d270259ebd97)
+
