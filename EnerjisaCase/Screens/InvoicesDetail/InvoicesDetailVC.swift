@@ -194,10 +194,17 @@ class InvoicesDetailVC: UIViewController {
     //MARK: Private Func
     
     private func configure() {
-        navigationController?.navigationBar.backgroundColor = .systemOrange
-        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
-        navigationController?.navigationBar.barTintColor = UIColor.systemOrange
-        navigationItem.title = "Fatura Detayı"
+        navigationController?.navigationBar.tintColor = .white
+        let titleText = "FATURA DETAYI"
+        let attributes: [NSAttributedString.Key: Any] = [
+            .foregroundColor: UIColor.white,
+            .font: Font.custom(size: 17,fontWeight: .SemiBold)
+        ]
+        let attributedTitle = NSAttributedString(string: titleText, attributes: attributes)
+        let navBarLabel = UILabel()
+        navBarLabel.attributedText = attributedTitle
+        navBarLabel.sizeToFit()
+        navigationItem.titleView = navBarLabel
         view.addSubview(scrollView)
         scrollView.addSubview(titleLabel)
         scrollView.addSubview(nameSurnameLabel)
@@ -236,8 +243,8 @@ class InvoicesDetailVC: UIViewController {
         scrollView.addSubview(stackView)
         stackView.snp.makeConstraints { make in
             make.top.equalTo(dueDateLabel.snp.bottom).offset(17)
-            make.left.equalToSuperview().offset(30)
-            make.right.equalToSuperview().offset(-30)
+            make.left.equalTo(view).offset(20)
+            make.right.equalTo(view).offset(-12)
             make.bottom.equalTo(scrollView).offset(-20)
         }
         
@@ -278,14 +285,14 @@ class InvoicesDetailVC: UIViewController {
     
     private func setupIinvoices() {
         guard let invoicesListData = viewModel?.getList() else { return }
-        customDetailView.setupCosntraints(title: invoicesListData.company ?? "", state: invoicesListData.address ?? "", instNo: invoicesListData.installationNumber ?? "", contNo: invoicesListData.contractAccountNumber!,  isList: false)
+        customDetailView.setupCosntraints(title: invoicesListData.company ?? "", state: invoicesListData.address ?? "", instNo: invoicesListData.installationNumber ?? "", contNo: invoicesListData.contractAccountNumber ?? "",  isList: false)
         if fromHome {
             let info = 4
-            customDetailView.customInfoView.createDetailView(info: info, price: invoicesListData.amount!)
+            customDetailView.customInfoView.createDetailView(info: info, price: invoicesListData.amount ?? "")
             
         }else {
             let info = 5
-            customDetailView.customInfoView.createDetailView(info: info, price: invoicesListData.amount!)
+            customDetailView.customInfoView.createDetailView(info: info, price: invoicesListData.amount ?? "")
             
         }
     }
@@ -524,7 +531,7 @@ extension InvoicesDetailVC {
         
         amountLabel.snp.makeConstraints { make in
             make.top.equalTo(customDetailView.snp.bottom).offset(20)
-            make.left.equalTo(dueDateLabel.snp.right).offset(35)
+            make.left.equalTo(dueDateLabel.snp.right).offset(40)
             
         }
         

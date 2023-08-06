@@ -66,17 +66,22 @@ class InvoicesListVC: UIViewController {
     
     private func initDelegate() {
         viewModel?.delegate = self
-        
         configure()
     }
     
     private func configure() {
         view.backgroundColor = .systemOrange
-        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
-        navigationController?.navigationBar.barTintColor = UIColor.systemOrange
-        navigationItem.title = "Fatura Listesi"
-        
-        //view.addSubview(parentView)
+        navigationController?.navigationBar.tintColor = .white
+        let titleText = "FATURA LİSTESİ"
+        let attributes: [NSAttributedString.Key: Any] = [
+            .foregroundColor: UIColor.white,
+            .font: Font.custom(size: 17,fontWeight: .SemiBold)
+        ]
+        let attributedTitle = NSAttributedString(string: titleText, attributes: attributes)
+        let titleLabel = UILabel()
+        titleLabel.attributedText = attributedTitle
+        titleLabel.sizeToFit()
+        navigationItem.titleView = titleLabel
         view.addSubview(scrollView)
         scrollView.addSubview(parentStackView)
         parentStackView.addArrangedSubview(customInfoView)

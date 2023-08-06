@@ -35,7 +35,7 @@ class InvoicesListViewModel: InvoicesListViewModelProtocol {
 
 extension InvoicesListViewModel {
     func loadInvoices() {
-        service?.fetchAllData(onSuccess: { [delegate] invoices in
+        service?.fetchAllData(onSuccess: {  [delegate] invoices in
             self.invoicesData = invoices
             delegate?.handleOutPut(outPut: .invoicesData(invoices))
         }, onFailure: { [delegate]  error in
