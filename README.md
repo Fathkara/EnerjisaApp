@@ -18,7 +18,7 @@
 ### Evim 
 
 <div style="display: flex; flex-wrap: wrap; gap: 10px;">
-  <img src="https://github.com/Fathkara/EnerjisaApp/assets/107872054/a3e4704a-f5df-4bbd-b56f-220d00547300" alt="1" width="640" height="320">
+  <img src="https://github.com/Fathkara/EnerjisaApp/assets/107872054/c85baeef-a307-465e-8480-337b2eb729ec" alt="1" width="200" height="400">
   <img src="https://github.com/Fathkara/EnerjisaApp/assets/107872054/e45ccd0f-af2b-4461-827b-10be8781388f" alt="2" width="1280" height="640">
   <img src="https://github.com/Fathkara/EnerjisaApp/assets/107872054/a46d48a0-63ca-4c91-9357-21d679ccdd16" alt="3" width="200" height="400">
   <img src="https://github.com/Fathkara/EnerjisaApp/assets/107872054/a8de0c38-c0a6-4b3f-9b9e-4f65d72fbab3" alt="4" width="200" height="400">
