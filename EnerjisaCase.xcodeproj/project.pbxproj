@@ -35,6 +35,7 @@
 		3D6443392A7D19D0002BDADA /* CustomDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D6443382A7D19D0002BDADA /* CustomDetailView.swift */; };
 		3D64433B2A7D3101002BDADA /* CustomExcelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D64433A2A7D3101002BDADA /* CustomExcelView.swift */; };
 		3DF59D532A7E680600A4705E /* CustomPopUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF59D522A7E680600A4705E /* CustomPopUp.swift */; };
+		3DF59D572A80E8AA00A4705E /* CustomAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF59D562A80E8AA00A4705E /* CustomAlert.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -65,6 +66,7 @@
 		3D6443382A7D19D0002BDADA /* CustomDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomDetailView.swift; sourceTree = "<group>"; };
 		3D64433A2A7D3101002BDADA /* CustomExcelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomExcelView.swift; sourceTree = "<group>"; };
 		3DF59D522A7E680600A4705E /* CustomPopUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomPopUp.swift; sourceTree = "<group>"; };
+		3DF59D562A80E8AA00A4705E /* CustomAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAlert.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -191,6 +193,7 @@
 				3D64433A2A7D3101002BDADA /* CustomExcelView.swift */,
 				3DF59D522A7E680600A4705E /* CustomPopUp.swift */,
 				3D474B462A7B86C9006D64E4 /* UIColor.swift */,
+				3DF59D562A80E8AA00A4705E /* CustomAlert.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -309,6 +312,7 @@
 				3D474B472A7B86C9006D64E4 /* UIColor.swift in Sources */,
 				3D474B542A7BB0E1006D64E4 /* Font.swift in Sources */,
 				3D474B362A7AD196006D64E4 /* InvoicesListBuilder.swift in Sources */,
+				3DF59D572A80E8AA00A4705E /* CustomAlert.swift in Sources */,
 				3D474B282A7ACF71006D64E4 /* UserInvoices.swift in Sources */,
 				3DF59D532A7E680600A4705E /* CustomPopUp.swift in Sources */,
 				3D474B392A7AD6D0006D64E4 /* ServiceConstant.swift in Sources */,

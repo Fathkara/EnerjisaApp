@@ -28,11 +28,14 @@ class CustomInfoView: UIView {
     let totalLbl: UILabel = {
         let label = UILabel()
         label.font = Font.custom(size: 15,fontWeight: .SemiBold)
+        label.textColor = UIColor("#444444")
         return label
     }()
     
     let totalPriceLabel: UILabel = {
         let label = UILabel()
+        label.font = Font.custom(size: 15,fontWeight: .Medium)
+        label.textColor = UIColor("#444444")
         return label
     }()
     

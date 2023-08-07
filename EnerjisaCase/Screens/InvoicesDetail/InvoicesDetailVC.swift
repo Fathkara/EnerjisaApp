@@ -23,7 +23,7 @@ class InvoicesDetailVC: UIViewController {
         return scrollView
     }()
     
-    private var titleLabel: UILabel = {
+    private lazy var titleLabel: UILabel = {
         let label = UILabel()
         label.textColor = UIColor("#444444")
         label.font = Font.custom(size: 15,fontWeight: .SemiBold)
@@ -31,7 +31,7 @@ class InvoicesDetailVC: UIViewController {
         return label
     }()
     
-    private var nameSurnameLabel: UILabel = {
+    private lazy var nameSurnameLabel: UILabel = {
         let label = UILabel()
         label.textColor = UIColor("#444444")
         label.font = Font.custom(size: 15,fontWeight: .SemiBold)
@@ -39,7 +39,7 @@ class InvoicesDetailVC: UIViewController {
         return label
     }()
     
-    private var nameTextfield: UITextField = {
+    lazy var nameTextfield: UITextField = {
         let textfield = UITextField()
         textfield.placeholder = "Ad ve soyad giriniz.."
         textfield.backgroundColor = UIColor("#F3F3F3")
@@ -54,7 +54,7 @@ class InvoicesDetailVC: UIViewController {
         return textfield
     }()
     
-    private var identifyNumberLabel: UILabel = {
+    private lazy var identifyNumberLabel: UILabel = {
         let label = UILabel()
         label.textColor = UIColor("#444444")
         label.font = Font.custom(size: 15,fontWeight: .SemiBold)
@@ -62,7 +62,7 @@ class InvoicesDetailVC: UIViewController {
         return label
     }()
     
-    private var identifyTextfield: UITextField = {
+    lazy var identifyTextfield: UITextField = {
         let textfield = UITextField()
         textfield.placeholder = "XXXXXXXXXXX"
         textfield.backgroundColor = UIColor("#F3F3F3")
@@ -77,7 +77,7 @@ class InvoicesDetailVC: UIViewController {
         return textfield
     }()
     
-    private var emailLabel: UILabel = {
+    private lazy var emailLabel: UILabel = {
         let label = UILabel()
         label.textColor = UIColor("#444444")
         label.font = Font.custom(size: 15,fontWeight: .SemiBold)
@@ -85,7 +85,7 @@ class InvoicesDetailVC: UIViewController {
         return label
     }()
     
-    private var emailTextfield: UITextField = {
+    lazy var emailTextfield: UITextField = {
         let textfield = UITextField()
         textfield.placeholder = "ornek@enerjisa.com.tr"
         textfield.backgroundColor = UIColor("#F3F3F3")
@@ -100,7 +100,7 @@ class InvoicesDetailVC: UIViewController {
         return textfield
     }()
     
-    private var phoneNumberLabel: UILabel = {
+    private lazy var phoneNumberLabel: UILabel = {
         let label = UILabel()
         label.textColor = UIColor("#444444")
         label.font = Font.custom(size: 15,fontWeight: .SemiBold)
@@ -108,7 +108,7 @@ class InvoicesDetailVC: UIViewController {
         return label
     }()
     
-    private var phoneNumberTextfield: PhoneNumberTextField = {
+    lazy var phoneNumberTextfield: PhoneNumberTextField = {
         let textfield = PhoneNumberTextField()
         textfield.placeholder = "Alan kodu olmadan numaranızı giriniz..."
         textfield.backgroundColor = UIColor("#F3F3F3")
@@ -123,7 +123,7 @@ class InvoicesDetailVC: UIViewController {
         return textfield
     }()
     
-    private var installationLabel: UILabel = {
+    private lazy var installationLabel: UILabel = {
         let label = UILabel()
         label.textColor = UIColor("#444444")
         label.font = Font.custom(size: 15,fontWeight: .SemiBold)
@@ -131,14 +131,14 @@ class InvoicesDetailVC: UIViewController {
         return label
     }()
     
-    private var leftLineView: UIView = {
+    private lazy var leftLineView: UIView = {
         let view = UIView()
         view.layer.borderWidth = 1
         view.layer.borderColor =  UIColor("#F3F3F3").cgColor
         return view
     }()
     
-    private var dueDateLabel: UILabel = {
+    private lazy var dueDateLabel: UILabel = {
         let label = UILabel()
         label.textColor = UIColor("#444444")
         label.font = Font.custom(size: 15,fontWeight: .SemiBold)
@@ -147,7 +147,7 @@ class InvoicesDetailVC: UIViewController {
         return label
     }()
     
-    private var amountLabel: UILabel = {
+    private lazy var amountLabel: UILabel = {
         let label = UILabel()
         label.textColor = UIColor("#444444")
         label.font = Font.custom(size: 15,fontWeight: .SemiBold)
@@ -157,14 +157,14 @@ class InvoicesDetailVC: UIViewController {
         return label
     }()
     
-    private var rightLineView: UIView = {
+    private lazy var rightLineView: UIView = {
         let view = UIView()
         view.layer.borderWidth = 1
         view.layer.borderColor =  UIColor("#F3F3F3").cgColor
         return view
     }()
     
-    private var backgroundControl: UIControl = {
+    private lazy var backgroundControl: UIControl = {
         let control = UIControl()
         control.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.5)
         control.isUserInteractionEnabled = false
@@ -186,7 +186,6 @@ class InvoicesDetailVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         configure()
         
     }
@@ -221,17 +220,17 @@ class InvoicesDetailVC: UIViewController {
         scrollView.addSubview(dueDateLabel)
         scrollView.addSubview(amountLabel)
         scrollView.addSubview(rightLineView)
+        changeKeyboard()
         nameTextfield.delegate = self
         identifyTextfield.delegate = self
         emailTextfield.delegate = self
         phoneNumberTextfield.delegate = self
+        
         viewModel?.loadInvoices()
         makeConstraints()
         showInvoicesDetail()
         
     }
-    
-    
     
     private func showInvoicesDetail() {
         guard !arrData.isEmpty else { return }
@@ -289,7 +288,6 @@ class InvoicesDetailVC: UIViewController {
         if fromHome {
             let info = 4
             customDetailView.customInfoView.createDetailView(info: info, price: invoicesListData.amount ?? "")
-            
         }else {
             let info = 5
             customDetailView.customInfoView.createDetailView(info: info, price: invoicesListData.amount ?? "")
@@ -297,6 +295,7 @@ class InvoicesDetailVC: UIViewController {
         }
     }
 }
+
 //MARK: - PopupView
 
 extension InvoicesDetailVC {
@@ -370,10 +369,10 @@ extension InvoicesDetailVC {
         popupView.createDocumentPopup(documentNo: selectedDueDate)
         createPopup()
         hiddenPopup()
-
+        
     }
     
-    func hiddenPopup() {
+    private func hiddenPopup() {
         self.popupView.nexPage = {
             self.removeBlur()
         }
@@ -388,33 +387,45 @@ extension InvoicesDetailVC {
             }
         }
     }
-    
-    
 }
 
 //MARK: - Validation functions
 
 extension InvoicesDetailVC {
+    
     private func isValidEmail(email: String) -> Bool {
         let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
         let emailPred = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
-        
-        if emailPred.evaluate(with: email) {
-            if email.hasSuffix("@enerjisa.com.tr") {
-                print("true")
-                return true
-            }
-            
-        }
-        return false
+        return emailPred.evaluate(with: email)
     }
     
-    private func isValidIdentifyID(_ identifyID: String) -> Bool {
-        let identifyRegex = "^[1-9]{1}[0-9]{9}[0-9]{1}$"
-        let identifyIDTest = NSPredicate(format: "SELF MATCHES %@", identifyRegex)
-        let isValidID = identifyIDTest.evaluate(with: identifyID)
-        return isValidID
+    private func isValidIdentify(_ identifyID: String) -> Bool {
+        guard identifyID.count == 11 else {
+            return false
+        }
+        
+        let numericCharacterSet = CharacterSet.decimalDigits
+        guard identifyID.rangeOfCharacter(from: numericCharacterSet.inverted) == nil else {
+            return false
+        }
+        guard identifyID.first != "0" else {
+            return false
+        }
+        
+        guard let lastDigit = Int(String(identifyID.last!)), lastDigit % 2 == 0 else {
+            return false
+        }
+        
+        let identifyDigits = identifyID.map { Int(String($0))! }
+        let controlID = (identifyDigits[0] + identifyDigits[2] + identifyDigits[4] + identifyDigits[6] + identifyDigits[8] + identifyDigits[1] + identifyDigits[3] + identifyDigits[5] + identifyDigits[7] + identifyDigits[9]) % 10
+        
+        guard controlID == identifyDigits[10] else {
+            return false
+        }
+        
+        return true
     }
+    
 }
 
 //MARK: - InvoicesDetailViewModelDelegate
@@ -432,9 +443,6 @@ extension InvoicesDetailVC: InvoicesDetailViewModelDelegate {
         }
     }
 }
-
-
-
 
 //MARK: - Constraints
 
@@ -561,13 +569,20 @@ extension InvoicesDetailVC: UITextFieldDelegate {
             let allowedCharacters = CharacterSet(charactersIn: "0123456789")
             let characterSet = CharacterSet(charactersIn: string)
             let newLength = (textField.text?.count ?? 0) + string.count - range.length
+            
             return allowedCharacters.isSuperset(of: characterSet) && newLength <= 11
             
         case phoneNumberTextfield:
-            let characterLimit = 15
+            let characterLimit = 14
             let newText = NSString(string: textField.text!).replacingCharacters(in: range, with: string)
             let numberOfChars = newText.count
-            return numberOfChars < characterLimit
+            if numberOfChars > 0, let firstDigit = newText.first, let numericValue = Int(String(firstDigit)) {
+                if numericValue == 0 || numericValue == 1 {
+                    return false
+                }
+            }
+            
+            return numberOfChars <= characterLimit
             
         default:
             break
@@ -579,49 +594,70 @@ extension InvoicesDetailVC: UITextFieldDelegate {
         if textField == emailTextfield {
             guard let email = textField.text else { return true }
             
+            if textField.text?.isEmpty == true {
+                return true
+            }
+            
             if !isValidEmail(email: email) {
-                let emailAlert = UIAlertController(title: "Yanlış e-mail girdiniz.", message: nil, preferredStyle: .alert)
-                emailAlert.addAction(UIAlertAction(title: "Tamam", style: .default, handler: { _ in
-                    textField.layer.borderColor = UIColor.clear.cgColor
-                    textField.layer.borderWidth = 0
-                }))
-                present(emailAlert, animated: true)
+                Alert.showCustomAlert(title: "Hata", message: "Yanlış e-mail girdiniz", viewController: self,alert: emailTextfield)
                 textField.layer.borderColor = UIColor.red.cgColor
                 textField.layer.borderWidth = 2
                 return false
+            }else {
+                emailTextfield.layer.borderColor = UIColor.clear.cgColor
+                emailTextfield.layer.borderWidth = 0
             }
         } else if textField == identifyTextfield {
-            guard let nationalID = textField.text else { return true }
             
-            if !isValidIdentifyID(nationalID) {
-                let identifyAlert = UIAlertController(title: "“Girdiğiniz T.C. Kimlik numarası doğru değildir“", message: nil, preferredStyle: .alert)
-                identifyAlert.addAction(UIAlertAction(title: "Tamam", style: .default, handler: { _ in
-                    textField.layer.borderColor = UIColor.clear.cgColor
-                    textField.layer.borderWidth = 0
-                }))
-                present(identifyAlert, animated: true)
-                textField.layer.borderColor = UIColor.red.cgColor
-                textField.layer.borderWidth = 2
-                return false
+            guard let nationalID = textField.text else { return true }
+            if textField.text?.isEmpty == true {
+                return true
             }
             
+            if !isValidIdentify(nationalID) {
+                Alert.showCustomAlert(title: "Hata", message: "Girdiğiniz T.C. Kimlik numarası doğru değildir.", viewController: self, alert: identifyTextfield)
+                
+                identifyTextfield.layer.borderColor = UIColor.red.cgColor
+                identifyTextfield.layer.borderWidth = 2
+                return false
+            } else {
+                identifyTextfield.layer.borderColor = UIColor.clear.cgColor
+                identifyTextfield.layer.borderWidth = 0
+            }
         } else if textField == phoneNumberTextfield {
             guard let phoneNumber = textField.text else { return true }
             
+            if textField.text?.isEmpty == true {
+                return true
+            }
             if phoneNumber.count < 14 {
-                let phoneAlert = UIAlertController(title: "Hata", message: "Geçersiz numara tuşladınız.", preferredStyle: .alert)
-                phoneAlert.addAction(UIAlertAction(title: "Tamam", style: .default, handler: { _ in
-                    textField.layer.borderColor = UIColor.clear.cgColor
-                    textField.layer.borderWidth = 0
-                }))
-                present(phoneAlert, animated: true)
+                Alert.showCustomAlert(title: "Hata", message: "Geçersiz numara tuşladınız", viewController: self,alert: phoneNumberTextfield)
                 textField.layer.borderColor = UIColor.red.cgColor
                 textField.layer.borderWidth = 2
                 return false
+            }else {
+                phoneNumberTextfield.layer.borderColor = UIColor.clear.cgColor
+                phoneNumberTextfield.layer.borderWidth = 0
             }
+            
         }
         
         return true
     }
+    
+    private func changeKeyboard() {
+        let keyboardGesture = UITapGestureRecognizer(target: self, action: #selector(closeKeyboard))
+        view.addGestureRecognizer(keyboardGesture)
+    }
+    
+    @objc func closeKeyboard() {
+        view.endEditing(true)
+    }
+    
+    @objc func didTapBack() {
+        view.endEditing(true)
+        dismiss(animated: true)
+    }
+
     
 }

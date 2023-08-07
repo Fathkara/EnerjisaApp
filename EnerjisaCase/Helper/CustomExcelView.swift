@@ -62,7 +62,7 @@ class ExcelStackView: UIView {
     var paymentLabel: UILabel = {
         let label = UILabel()
         label.textAlignment = .left
-        label.textColor = UIColor("#444444")
+        label.textColor = UIColor("#F3BC45")
         label.font = Font.custom(size: 16,fontWeight: .Medium)
         return label
     }()
@@ -112,11 +112,10 @@ class ExcelStackView: UIView {
         
     }
     
-    func makeConstraints() {
+    private func makeConstraints() {
         parentStackView.snp.makeConstraints { make in
             make.left.top.equalTo(self).offset(16)
             make.right.bottom.equalTo(self).offset(-16)
-            //make.bottom.equalTo(self).offset(16)
         }
         
         firstLine.layer.borderColor = UIColor("#F3F3F3").cgColor

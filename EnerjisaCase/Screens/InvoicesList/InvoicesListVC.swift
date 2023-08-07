@@ -12,7 +12,7 @@ class InvoicesListVC: UIViewController {
     
     //MARK: - Views
     
-    private var totalPriceLabel: UILabel = {
+    private lazy var totalPriceLabel: UILabel = {
         let label = UILabel()
         
         return label
@@ -27,7 +27,7 @@ class InvoicesListVC: UIViewController {
         return scrollView
     }()
     
-    private var parentStackView: UIStackView = {
+    private lazy var parentStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.axis = .vertical
@@ -90,16 +90,15 @@ class InvoicesListVC: UIViewController {
         
         viewModel?.loadInvoices()
         segueForDetail()
-        
         makeConstraints()
     }
-    func configureNavigationBar() {
+    
+    private func configureNavigationBar() {
         let appearance = UINavigationBarAppearance()
         appearance.configureWithTransparentBackground()
         
         let startColor = UIColor(red: 0.99, green: 0.93, blue: 0.31, alpha: 1.0)
         let endColor = UIColor(red: 0.93, green: 0.65, blue: 0.25, alpha: 1.0)
-        
         let gradient = CAGradientLayer()
         gradient.colors = [startColor.cgColor, endColor.cgColor]
         gradient.startPoint = CGPoint(x: -0.1, y: 0)
@@ -113,16 +112,13 @@ class InvoicesListVC: UIViewController {
         navigationController?.navigationBar.scrollEdgeAppearance = appearance
     }
     
-    func imageFromLayer(_ layer: CALayer) -> UIImage {
+    private func imageFromLayer(_ layer: CALayer) -> UIImage {
         UIGraphicsBeginImageContextWithOptions(layer.frame.size, false, UIScreen.main.scale)
         layer.render(in: UIGraphicsGetCurrentContext()!)
         let outputImage = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
         return outputImage ?? UIImage()
     }
-    
-    
-    
     
     private func handleFisrtList() {
         guard let firstList = self.fetchFirstList(isFirst: true) else { return }
@@ -187,10 +183,7 @@ class InvoicesListVC: UIViewController {
             self.show(vc, sender: nil)
         }
     }
-    
-    
 }
-
 
 
 //MARK: InvoicesViewModelDelegate
@@ -212,8 +205,6 @@ extension InvoicesListVC: InvoicesViewModelDelegate {
 
 extension InvoicesListVC {
     func makeConstraints() {
-        
-        
         scrollView.snp.makeConstraints { make in
             make.left.right.bottom.equalTo(view)
             make.top.equalTo(view.safeAreaLayoutGuide)
