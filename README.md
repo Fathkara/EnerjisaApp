@@ -19,7 +19,7 @@
 
 <div style="display: flex; flex-wrap: wrap; gap: 10px;">
   <img src="https://github.com/Fathkara/EnerjisaApp/assets/107872054/c85baeef-a307-465e-8480-337b2eb729ec" alt="1" width="200" height="400">
-  <img src="https://github.com/Fathkara/EnerjisaApp/assets/107872054/a3f80b44-068a-44b1-b65d-9c96129f9ffe" alt="2" width="1280" height="640">
+  <img src="https://github.com/Fathkara/EnerjisaApp/assets/107872054/a3f80b44-068a-44b1-b65d-9c96129f9ffe" alt="2" width="200" height="400">
   <img src="https://github.com/Fathkara/EnerjisaApp/assets/107872054/a1cd87da-eb0b-45fc-871b-a61a99188b8d" alt="3" width="200" height="400">
   <img src="https://github.com/Fathkara/EnerjisaApp/assets/107872054/d8d11b09-917f-4b31-a459-6336ab665433" alt="4" width="200" height="400">
   <img src="https://github.com/Fathkara/EnerjisaApp/assets/107872054/b9f5c6d7-6160-4b2b-854e-4cb235aa9b32" alt="5" width="200" height="400">
