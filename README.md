@@ -19,19 +19,19 @@
 
 <div style="display: flex; flex-wrap: wrap; gap: 10px;">
   <img src="https://github.com/Fathkara/EnerjisaApp/assets/107872054/c85baeef-a307-465e-8480-337b2eb729ec" alt="1" width="200" height="400">
-  <img src="https://github.com/Fathkara/EnerjisaApp/assets/107872054/e45ccd0f-af2b-4461-827b-10be8781388f" alt="2" width="1280" height="640">
-  <img src="https://github.com/Fathkara/EnerjisaApp/assets/107872054/a46d48a0-63ca-4c91-9357-21d679ccdd16" alt="3" width="200" height="400">
-  <img src="https://github.com/Fathkara/EnerjisaApp/assets/107872054/a8de0c38-c0a6-4b3f-9b9e-4f65d72fbab3" alt="4" width="200" height="400">
-  <img src="https://github.com/Fathkara/EnerjisaApp/assets/107872054/160a8ae7-194f-4b91-b5bd-4683181e8f86" alt="5" width="200" height="400">
+  <img src="https://github.com/Fathkara/EnerjisaApp/assets/107872054/a3f80b44-068a-44b1-b65d-9c96129f9ffe" alt="2" width="1280" height="640">
+  <img src="https://github.com/Fathkara/EnerjisaApp/assets/107872054/a1cd87da-eb0b-45fc-871b-a61a99188b8d" alt="3" width="200" height="400">
+  <img src="https://github.com/Fathkara/EnerjisaApp/assets/107872054/d8d11b09-917f-4b31-a459-6336ab665433" alt="4" width="200" height="400">
+  <img src="https://github.com/Fathkara/EnerjisaApp/assets/107872054/b9f5c6d7-6160-4b2b-854e-4cb235aa9b32" alt="5" width="200" height="400">
 </div>
 
 
 ### İş Yerim
 
 <div style="display: flex; flex-wrap: wrap; gap: 10px;">
-  <img src="https://github.com/Fathkara/EnerjisaApp/assets/107872054/4b1b795b-3bd6-4ad1-bb66-b831a4015024" alt="6" width="200" height="400">
-  <img src="https://github.com/Fathkara/EnerjisaApp/assets/107872054/3a34a7dc-1de7-4559-ba65-3a0b8d706f38" alt="7" width="200" height="400">
-  <img src="https://github.com/Fathkara/EnerjisaApp/assets/107872054/4c94a748-e9c3-4925-a8be-e73aa56cc93a" alt="8" width="200" height="400">
-  <img src="https://github.com/Fathkara/EnerjisaApp/assets/107872054/8233de7e-2fb0-43ec-b4eb-8a4f44ed5dfb" alt="9" width="200" height="400">
-  <img src="https://github.com/Fathkara/EnerjisaApp/assets/107872054/b294d851-eea4-4275-947a-d759fa3bdf3a" alt="10" width="200" height="400">
+  <img src="https://github.com/Fathkara/EnerjisaApp/assets/107872054/0f7f4ebe-38bd-43d3-b6c5-35c322f4cf91" alt="6" width="200" height="400">
+  <img src="https://github.com/Fathkara/EnerjisaApp/assets/107872054/546f98eb-2766-43a1-96e1-35ed0e6b47f9" alt="7" width="200" height="400">
+  <img src="https://github.com/Fathkara/EnerjisaApp/assets/107872054/5e96e0a1-8edd-43e0-af8b-25cf534fe7ca" alt="8" width="200" height="400">
+  <img src="https://github.com/Fathkara/EnerjisaApp/assets/107872054/c2a40595-9478-4dbb-83db-1bace55d92e3" alt="9" width="200" height="400">
+  <img src="https://github.com/Fathkara/EnerjisaApp/assets/107872054/337958d1-f102-43a7-a4dd-7b8376bc0da0" alt="10" width="200" height="400">
 </div>
